@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Funcionarios.Modelo.Funcionario>
+
+<h2>Lista de Funcionários</h2>
+<p>
+    @Html.ActionLink("Novo", "CreateOrEdit", new { codigo=0 })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "CreateOrEdit", new { codigo = item.Codigo })
+            @Html.ActionLink("Apagar", "Delete", new { codigo = item.Codigo })
+        </td>
+    </tr>
+}
+    
+</table>
